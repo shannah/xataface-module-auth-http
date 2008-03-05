@@ -30,6 +30,19 @@
  */     
 class dataface_modules_http {
 
+	function authenticate(){
+		$auth =& Dataface_AuthenticationTool::getInstance();
+		if ( $auth->checkCredentials()){
+			$creds = $this->getCredentials();
+			$_SESSION['UserName'] = $creds['UserName'];
+			return true;
+		} else {
+			return PEAR::raiseError('No credentials were included in the URL.  Proceed as normal.', DATAFACE_E_REQUEST_NOT_HANDLED);
+			
+		}
+		
+	}
+
 	function getCredentials(){
 	
 		$username = ( isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER'] : null);
