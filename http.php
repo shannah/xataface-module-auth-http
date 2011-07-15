@@ -65,8 +65,10 @@ class dataface_modules_http {
 			exit;
 		} else {
 			$_SESSION['UserName'] = $creds['UserName'];
-			header('Location: '.$app->url(array()));
+			Dataface_Application::getInstance()->display();
 			exit;
+			//header('Location: '.$app->url(array()));
+			//exit;
 		}
 	}
 	
