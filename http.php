@@ -34,6 +34,7 @@ class dataface_modules_http {
 		$auth =& Dataface_AuthenticationTool::getInstance();
 		if ( $auth->checkCredentials()){
 			$creds = $this->getCredentials();
+			Dataface_Application::getInstance()->startSession();
 			$_SESSION['UserName'] = $creds['UserName'];
 			return true;
 		} else {
@@ -64,6 +65,7 @@ class dataface_modules_http {
 			echo 'Text to send if user hits Cancel button';
 			exit;
 		} else {
+			Dataface_Application::getInstance()->startSession();
 			$_SESSION['UserName'] = $creds['UserName'];
 			Dataface_Application::getInstance()->display();
 			exit;
