@@ -48,6 +48,7 @@ class dataface_modules_http {
 	
 		$username = ( isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER'] : null);
 		$password = ( isset($_SERVER['PHP_AUTH_PW']) ? $_SERVER['PHP_AUTH_PW'] : null);
+		if ( !@$username) return null;
 		return array('UserName'=>$username, 'Password'=>$password);
 	}
 
