@@ -84,23 +84,5 @@ class dataface_modules_http {
 		return @$_SESSION['UserName'];	
 	}
 	
-	/**
-	 * Returns the Dataface_Record for the currently logged in user.
-	 */
-	function getLoggedInUser(){
-		if ( !@$_SESSION['UserName'] ) return null;
-		$auth =& Dataface_AuthenticationTool::getInstance();
-		$record = df_get_record($auth->usersTable, array($auth->usernameColumn=>'='.$this->getLoggedInUsername()));
-		if ( !isset($record) ){
-			$record = new Dataface_Record($auth->usersTable, array($this->usernameColumn=>$this->getLoggedInUsername()));
-		}
-		//print_r($record->strvals());exit;
-		return $record;
-	}	
-	
-	
-	
-	
 
 }
-?>
